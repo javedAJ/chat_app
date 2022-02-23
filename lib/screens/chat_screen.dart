@@ -1,4 +1,5 @@
 import 'package:chat_app/widgets/auth/chat/messages.dart';
+import 'package:chat_app/widgets/auth/chat/new_messages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -50,24 +51,16 @@ class ChatScreen extends StatelessWidget {
         ],
         title: Text('Chats'),
       ),
-      backgroundColor: color.AppColor.neavyblue,
+      //backgroundColor: color.AppColor.neavyblue,
       body: Container(
         child: Column(
           children: <Widget>[
             Expanded(
               child: Messages(),
             ),
+            NewMessages(),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: color.AppColor.red,
-        child: Icon(Icons.add),
-        onPressed: () {
-          FirebaseFirestore.instance
-              .collection('chats/XjGKeIwW4K0wwb6Qp9w3/messages')
-              .add({'text': 'This was addes by clicking the button'});
-        },
       ),
     );
   }
@@ -99,5 +92,18 @@ class ChatScreen extends StatelessWidget {
 //               ),
 //             ),
 //           );
+//         },
+//       ),
+
+
+//floating buttom
+
+// floatingActionButton: FloatingActionButton(
+//         backgroundColor: color.AppColor.red,
+//         child: Icon(Icons.add),
+//         onPressed: () {
+//           FirebaseFirestore.instance
+//               .collection('chats/XjGKeIwW4K0wwb6Qp9w3/messages')
+//               .add({'text': 'This was addes by clicking the button'});
 //         },
 //       ),
