@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:chat_app/colors.dart' as color;
 
 class AuthForm extends StatefulWidget {
-  AuthForm(this.submitFn);
+  AuthForm(this.submitFn, this.isLoading);
 
+  final bool isLoading;
   final void Function(
     String email,
     String password,
     String userName,
     bool isLogin,
+    BuildContext ctx,
   ) submitFn;
 
   @override
@@ -33,10 +35,11 @@ class _AuthFormState extends State<AuthForm> {
     if (isValid) {
       _formKey.currentState!.save();
       widget.submitFn(
-        _userEmail,
-        _userPassword,
-        _userName,
+        _userEmail.trim(),
+        _userPassword.trim(),
+        _userName.trim(),
         _isLogin,
+        context,
       );
     }
   }
@@ -126,23 +129,30 @@ class _AuthFormState extends State<AuthForm> {
                     const SizedBox(
                       height: 12,
                     ),
-                    RaisedButton(
-                      onPressed: _trySubmit,
-                      child: Text(_isLogin ? 'Login' : 'Signup'),
-                    ),
-                    FlatButton(
-                      textColor: color.AppColor.red,
-                      onPressed: () {
-                        setState(() {
-                          _isLogin = !_isLogin;
-                        });
-                      },
-                      child: Text(
-                        _isLogin
-                            ? 'Create new Account'
-                            : 'I already have an account',
+                    if (widget.isLoading)
+                      CircularProgressIndicator(
+                        color: color.AppColor.neavyblue,
                       ),
-                    ),
+                    if (!widget.isLoading)
+                      RaisedButton(
+                        onPressed: _trySubmit,
+                        child: Text(_isLogin ? 'Login' : 'Signup'),
+                      ),
+                    //if (widget.isLoading) CircularProgressIndicator(),
+                    if (!widget.isLoading)
+                      FlatButton(
+                        textColor: color.AppColor.red,
+                        onPressed: () {
+                          setState(() {
+                            _isLogin = !_isLogin;
+                          });
+                        },
+                        child: Text(
+                          _isLogin
+                              ? 'Create new Account'
+                              : 'I already have an account',
+                        ),
+                      ),
                   ],
                 )),
           ),
