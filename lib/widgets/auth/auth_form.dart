@@ -1,8 +1,17 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:chat_app/colors.dart' as color;
 
 class AuthForm extends StatefulWidget {
-  const AuthForm({Key? key}) : super(key: key);
+  AuthForm(this.submitFn);
+
+  final void Function(
+    String email,
+    String password,
+    String userName,
+    bool isLogin,
+  ) submitFn;
 
   @override
   _AuthFormState createState() => _AuthFormState();
@@ -23,9 +32,12 @@ class _AuthFormState extends State<AuthForm> {
 
     if (isValid) {
       _formKey.currentState!.save();
-      print(_userEmail);
-      print(_userName);
-      print(_userPassword);
+      widget.submitFn(
+        _userEmail,
+        _userPassword,
+        _userName,
+        _isLogin,
+      );
     }
   }
 
@@ -47,6 +59,7 @@ class _AuthFormState extends State<AuthForm> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
+                      key: const ValueKey('email'),
                       validator: (value) {
                         if (value!.isEmpty || !value.contains('@')) {
                           return 'Please Enter a valid email address';
@@ -72,6 +85,7 @@ class _AuthFormState extends State<AuthForm> {
                     ),
                     if (!_isLogin)
                       TextFormField(
+                        key: const ValueKey('username'),
                         validator: (value) {
                           if (value!.isEmpty || value.length < 4) {
                             return 'Please enter at least 4 charcters';
@@ -91,6 +105,7 @@ class _AuthFormState extends State<AuthForm> {
                       height: 10,
                     ),
                     TextFormField(
+                      key: const ValueKey('password'),
                       validator: (value) {
                         if (value!.isEmpty || value.length < 7) {
                           return 'password must be at least 7 charcters long';

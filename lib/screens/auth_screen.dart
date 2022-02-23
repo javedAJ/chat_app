@@ -10,6 +10,13 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  void _submitAuthForm(
+    String email,
+    String password,
+    String username,
+    bool isLogin,
+  ) {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
