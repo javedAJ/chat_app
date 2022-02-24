@@ -51,7 +51,7 @@ class ChatScreen extends StatelessWidget {
         ],
         title: Text('Chats'),
       ),
-      //backgroundColor: color.AppColor.neavyblue,
+      backgroundColor: color.AppColor.neavyblue,
       body: Container(
         child: Column(
           children: <Widget>[

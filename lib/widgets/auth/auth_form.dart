@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
@@ -61,6 +63,24 @@ class _AuthFormState extends State<AuthForm> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
+                    CircleAvatar(
+                      backgroundColor: color.AppColor.red,
+                      radius: 40,
+                    ),
+                    FlatButton.icon(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.image,
+                        color: color.AppColor.red,
+                      ),
+                      label: Text(
+                        'Add Image',
+                        style: TextStyle(color: color.AppColor.red),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     TextFormField(
                       key: const ValueKey('email'),
                       validator: (value) {
