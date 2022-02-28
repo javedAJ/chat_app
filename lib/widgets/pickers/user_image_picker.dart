@@ -31,20 +31,13 @@ class _UserImagePickerState extends State<UserImagePicker> {
           style: TextStyle(color: color.AppColor.neavyblue),
         ),
         actions: [
-          FlatButton(
-              color: color.AppColor.neavyblue,
-              onPressed: () => Navigator.pop(context, ImageSource.camera),
-              child: Text(
-                "Camera",
-                style: TextStyle(color: color.AppColor.white1),
-              )),
-          FlatButton(
-            color: color.AppColor.neavyblue,
+          IconButton(
+            onPressed: () => Navigator.pop(context, ImageSource.camera),
+            icon: Icon(Icons.camera_alt),
+          ),
+          IconButton(
             onPressed: () => Navigator.pop(context, ImageSource.gallery),
-            child: Text(
-              "Gallery",
-              style: TextStyle(color: color.AppColor.white1),
-            ),
+            icon: const Icon(Icons.photo),
           ),
         ],
       ),
