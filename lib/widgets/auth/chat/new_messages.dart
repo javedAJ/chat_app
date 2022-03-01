@@ -34,27 +34,35 @@ class _NewMessagesState extends State<NewMessages> {
     return Container(
       margin: const EdgeInsets.only(top: 8),
       padding: const EdgeInsets.all(8),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: TextField(
-              controller: _controller,
-              decoration: const InputDecoration(
-                labelText: 'Send a message...',
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                child: TextField(
+                  controller: _controller,
+                  decoration: const InputDecoration(
+                    labelText: 'Send a message...',
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      _enteredMessage = value;
+                    });
+                  },
+                ),
               ),
-              onChanged: (value) {
-                setState(() {
-                  _enteredMessage = value;
-                });
-              },
             ),
-          ),
-          IconButton(
-            onPressed: _enteredMessage.trim().isEmpty ? null : _sendMessage,
-            icon: Icon(Icons.send_outlined),
-            color: color.AppColor.red,
-          )
-        ],
+            IconButton(
+              onPressed: _enteredMessage.trim().isEmpty ? null : _sendMessage,
+              icon: Icon(Icons.send_outlined),
+              color: color.AppColor.red,
+            )
+          ],
+        ),
       ),
     );
   }
