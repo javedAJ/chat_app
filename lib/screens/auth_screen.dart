@@ -111,9 +111,21 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: AuthForm(
-        _submitAuthForm,
-        _isLoading,
+      body: Container(
+        height: 550,
+        decoration: BoxDecoration(
+          color: color.AppColor.red,
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(60),
+            bottomRight: Radius.circular(60),
+          ),
+        ),
+        child: Container(
+          child: AuthForm(
+            _submitAuthForm,
+            _isLoading,
+          ),
+        ),
       ),
     );
   }

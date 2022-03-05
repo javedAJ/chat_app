@@ -15,6 +15,23 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  // void initState() {
+  //   super.initState();
+  //   final fbm = FirebaseMessaging.instance;
+  //   fbm.requestPermission();
+  //   FirebaseMessaging.onMessage.listen((message) {
+  //     print(message);
+  //     return;
+  //   });
+  //   FirebaseMessaging.onMessageOpenedApp.listen((message) {
+  //     print(message);
+  //     return;
+  //   });
+  //   fbm.subscribeToTopic('chat');
+  // }
+
+  // upper method by course
+
   // @override
   // void initState() {
   //   final fbm = FirebaseMessaging.instance;
@@ -34,9 +51,10 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: color.AppColor.red,
         actions: [
           DropdownButton(
+            underline: Container(),
             icon: Icon(
               Icons.more_vert,
-              color: color.AppColor.neavyblue,
+              color: color.AppColor.white1,
             ),
             items: [
               DropdownMenuItem(
@@ -69,7 +87,7 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
         title: Text('Chats'),
       ),
-      backgroundColor: color.AppColor.neavyblue,
+      backgroundColor: color.AppColor.neavyblue2,
       body: Container(
         child: Column(
           children: <Widget>[
@@ -83,9 +101,6 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 }
-
-
-
 
 //Stream builder of chat for refrence
 
@@ -112,7 +127,6 @@ class _ChatScreenState extends State<ChatScreen> {
 //           );
 //         },
 //       ),
-
 
 //floating buttom
 
